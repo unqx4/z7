@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>𝕫7ㅤ𝐀𝐜𝐮𝐬𝐞𝐝</title>
+  <style>
+    :root {
+      --background: #000000;
+      --background-alt: #0a0a0a;
+      --text: #e4e4e4;
+      --muted: #b0b0b0;
+      --primary: #25d366;
+      --primary-2: #128c7e;
+      --shadow: rgba(0, 0, 0, 0.6);
+      --radius: 14px;
+      --max-width: 1024px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #050505 0%, #0b0b0d 45%, #050505 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(100%, var(--max-width));
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10, 11, 23, 0.84);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .logo svg,
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+    }
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text .tagline {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .brand {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 0 1.25rem;
+      overflow: hidden;
+    }
+
+    .brand::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 30% 30%, rgba(37, 211, 102, 0.35), transparent 55%),
+        radial-gradient(circle at 70% 50%, rgba(18, 140, 126, 0.25), transparent 60%);
+      opacity: 0.75;
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    .brand-logo {
+      width: 160px;
+      height: 160px;
+      border-radius: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.35);
+      object-fit: cover;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 0.05em;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.75rem;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .action-icon {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+    }
+
+    .action-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.3rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: var(--background);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-alt {
+      background: var(--background-alt);
+    }
+
+    .section h2 {
+      margin: 0 0 0.75rem;
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 22px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .card span {
+      font-weight: 600;
+    }
+
+    .form {
+      max-width: 520px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form label {
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .form input,
+    .form textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+    }
+
+    .form textarea {
+      resize: vertical;
+    }
+
+    .form-message {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .social a {
+      margin-left: 1rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .social a:hover {
+      color: var(--primary);
+    }
+
+    .whatsapp-float,
+    .discord-float {
+      position: fixed;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .whatsapp-float:hover,
+    .discord-float:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .discord-float {
+      right: 13rem; /* separa del botón de WhatsApp */
+      background: linear-gradient(135deg, #7289da, #5865f2);
+    }
+
+    .whatsapp-float img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 40;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(460px, 100%);
+      background: rgba(15, 15, 18, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1.8rem 1.6rem 1.4rem;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      display: grid;
+      gap: 1rem;
+      max-height: 92vh;
+      overflow: auto;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .modal-overlay.show .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text);
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .modal h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .modal label {
+      font-weight: 600;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .modal select,
+    .modal input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(10, 10, 15, 0.55);
+      color: var(--text);
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .modal select:focus,
+    .modal input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .modal input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .modal .modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .modal .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    @media (max-width: 840px) {
+      .brand {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .brand-logo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .brand h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .modal {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="brand">
+      <img
+        class="brand-logo"
+        src="https://raw.githubusercontent.com/unqx4/z7/main/WhatsApp%20Image%202026-03-14%20at%2011.14.06%20PM.jpeg"
+        alt="Logo del Clan"
+      />
+      <h1>𝕫7ㅤ𝐀𝐜𝐮𝐬𝐞𝐝</h1>
+      <p class="subtitle">PvP, compes y buena joda</p>
+      <div class="action-row">
+        <button class="btn" id="openPvPForm">Reservas PvPs</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="pvpModal">
+    <div class="modal">
+      <button class="modal-close" id="closePvP" aria-label="Cerrar formulario">×</button>
+      <h2>Formulario rápido</h2>
+      <label for="bet-status">¿Apostado o no?</label>
+      <select id="bet-status">
+        <option value="Apostado">Apostado</option>
+        <option value="Sin apostar">Sin apostar</option>
+      </select>
+
+      <label for="team-size">4 vs 4?</label>
+      <select id="team-size">
+        <option value="4 vs 4">4 vs 4</option>
+        <option value="Otra modalidad">Otra modalidad</option>
+      </select>
+
+      <label for="notes">Notas (opcional)</label>
+      <input type="text" id="notes" placeholder="Ej. horarios o nick" />
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelPvP">Cancelar</button>
+        <button class="btn" id="sendPvP">Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pvpModal');
+    const openBtn = document.getElementById('openPvPForm');
+    const cancelBtn = document.getElementById('cancelPvP');
+    const closeBtn = document.getElementById('closePvP');
+    const sendBtn = document.getElementById('sendPvP');
+
+    openBtn?.addEventListener('click', () => modal?.classList.add('show'));
+    cancelBtn?.addEventListener('click', () => modal?.classList.remove('show'));
+    closeBtn?.addEventListener('click', () => modal?.classList.remove('show'));
+
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+
+    sendBtn?.addEventListener('click', () => {
+      const bet = document.getElementById('bet-status')?.value || 'Sin apostar';
+      const team = document.getElementById('team-size')?.value || '4 vs 4';
+      const notes = document.getElementById('notes')?.value || '';
+
+      const message = `Hola, quiero organizar un PvP vs clan.\nApostado: ${bet}\nModalidad: ${team}${notes ? `\nNotas: ${notes}` : ''}`;
+      const url = `https://wa.me/573135213963?text=${encodeURIComponent(message)}`;
+
+      window.open(url, '_blank');
+      modal?.classList.remove('show');
+    });
+  </script>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/573023898517"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img
+      src="https://raw.githubusercontent.com/unqx4/z7/main/WhatsApp%20Image%202026-03-14%20at%2011.14.06%20PM.jpeg"
+      alt="WhatsApp"
+    />
+    <span>WhatsApp</span>
+  </a>
+
+  <a
+    class="discord-float"
+    href="https://discord.gg/BkdNkEk3"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Discord del clan"
+  >
+    <span class="discord-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
+        <path fill="#fff" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm4.7 15.4c-.4.6-1 .9-1.7 1.1-.5.2-1.1.3-1.7.3-.6 0-1.2 0-1.7-.2-.7-.2-1.3-.6-1.7-1.2-.4-.6-.6-1.3-.6-2.1 0-.1 0-.2.1-.3.5.3 1.1.5 1.7.6.4.1.8.1 1.1.1.3 0 .6 0 .9-.1.6-.1 1.1-.3 1.6-.6.1.1.1.2.1.3 0 .8-.2 1.5-.6 2.1zm-6.7-4.4c0 .8.3 1.4.8 1.9.5.5 1.1.7 1.7.8.1 0 .2.1.3.1.1 0 .2 0 .3-.1.6-.1 1.2-.3 1.7-.8.5-.5.8-1.1.8-1.9 0-.8-.3-1.4-.8-1.9-.5-.5-1.1-.7-1.7-.8-.1 0-.2 0-.3.1-.1 0-.2 0-.3.1-.6.1-1.2.3-1.7.8-.5.5-.8 1.1-.8 1.9z"/>
+      </svg>
+    </span>
+    <span>Discord</span>
+  </a>
+</body>
+</html>
